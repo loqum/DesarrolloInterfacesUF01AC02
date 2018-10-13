@@ -19,8 +19,14 @@ public class Formulario extends AppCompatActivity {
         textInputName = findViewById(R.id.text_input_name);
     }
 
-    public boolean validateName() {
-        String nameInput = textInputName.getEditText().getText().toString().trim();
+    public boolean validateName() throws NullPointerException {
+        String nameInput;
+
+        try {
+            nameInput = textInputName.getEditText().getText().toString().trim();
+        } catch (NullPointerException e) {
+            throw e;
+        }
 
         if(nameInput.isEmpty()) {
             textInputName.setError("El campo no puede estar vacío");
@@ -31,15 +37,20 @@ public class Formulario extends AppCompatActivity {
         }
     }
 
-    public void aceptarInput(View view) {
+    public void aceptarInput(View view) throws NullPointerException {
         if (!validateName()) {
             return;
         }
 
-        String input = "Nombre: " + textInputName.getEditText().getText().toString();
+        String input;
+
+        try {
+            input = "Nombre: " + textInputName.getEditText().getText().toString();
+        } catch (NullPointerException e2) {
+            throw e2;
+        }
 
         Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
-
 
     }
 }
