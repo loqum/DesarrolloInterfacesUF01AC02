@@ -3,12 +3,14 @@ package rfm.com.desarrollointerfacesuf01ac02;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.widget.Toast;
 
 public class Formulario extends AppCompatActivity {
 
     private TextInputLayout textInputName;
+    private AppCompatTextView appCompatTextView;
 
 
     @Override
@@ -17,6 +19,7 @@ public class Formulario extends AppCompatActivity {
         setContentView(R.layout.activity_formulario);
 
         textInputName = findViewById(R.id.text_input_name);
+        appCompatTextView = findViewById(R.id.text_input_your_name);
     }
 
     public boolean validateName() throws NullPointerException {
@@ -51,6 +54,7 @@ public class Formulario extends AppCompatActivity {
         }
 
         Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
+        appCompatTextView.setText("Tu nombre: " + textInputName.getEditText().getText().toString());
 
     }
 }
